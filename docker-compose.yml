@@ -1,0 +1,15 @@
+# PostgreSQL: docker compose up -d
+services:
+  db:
+    image: postgres:16
+    container_name: persoai-postgres
+    environment:
+      POSTGRES_USER: persoai
+      POSTGRES_PASSWORD: persoai
+      POSTGRES_DB: persoai
+    ports:
+      - "5432:5432"
+    volumes:
+      - persoai-pgdata:/var/lib/postgresql/data
+volumes:
+  persoai-pgdata:

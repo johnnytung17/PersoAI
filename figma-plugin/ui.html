@@ -1,0 +1,67 @@
+<style>
+  body { font: 13px/1.45 system-ui, sans-serif; color: #0d0f12; margin: 16px; }
+  h1 { font-size: 15px; margin: 0 0 4px; }
+  p { margin: 0 0 12px; color: #48546e; }
+  button { width: 100%; padding: 9px 12px; border: 0; border-radius: 8px; background: #0056d2; color: #fff; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  .sec { border-top: 1px solid #dae1ed; padding-top: 12px; margin-top: 14px; }
+  label { display: block; font-weight: 600; margin: 8px 0 4px; }
+  #log { margin-top: 12px; max-height: 150px; overflow: auto; background: #f5f7fa; border-radius: 6px; padding: 8px; font: 12px/1.4 ui-monospace, monospace; white-space: pre-wrap; }
+</style>
+
+<h1>PersoAI · Luồng người mới</h1>
+<p><b>Cảnh báo:</b> nút 1 xoá toàn bộ nội dung 3 trang Desktop, Mobile, Thành phần & Token cùng biến/style cũ, rồi dựng lại theo luồng người mới (Lan).</p>
+<label style="font-weight:400"><input type="checkbox" id="ok" /> Mình hiểu, xoá sạch và dựng lại</label>
+<button id="build" style="margin-top:8px" disabled>1. Xoá sạch và dựng token, component, màn chính</button>
+
+<div class="sec">
+  <p>Chọn mọi file trong <code>figma-plugin/anh-chup/</code>. Plugin chỉ lấy ảnh thuộc luồng người mới (đăng ký, khảo sát, các ảnh <code>lan-…</code>) và xếp theo thứ tự luồng.</p>
+  <label for="desk">Ảnh desktop</label>
+  <input id="desk" type="file" accept="image/png" multiple />
+  <label for="mob">Ảnh mobile</label>
+  <input id="mob" type="file" accept="image/png" multiple />
+  <button id="images" style="margin-top:10px">2. Chèn ảnh chụp app</button>
+</div>
+<div id="log">Sẵn sàng.</div>
+
+<script>
+  const log = (t) => { const el = document.getElementById("log"); el.textContent += "\n" + t; el.scrollTop = el.scrollHeight; };
+  const btns = () => document.querySelectorAll("button");
+  const ok = document.getElementById("ok");
+  const busy = (b) => { btns().forEach((x) => (x.disabled = b)); if (!b) document.getElementById("build").disabled = !ok.checked; };
+  ok.onchange = () => (document.getElementById("build").disabled = !ok.checked);
+
+  document.getElementById("build").onclick = () => { busy(true); log("Đang xoá và dựng lại…"); parent.postMessage({ pluginMessage: { type: "build" } }, "*"); };
+
+  // Figma chỉ nhận ảnh tối đa 4096 px mỗi chiều: thu nhỏ trên canvas trước khi gửi.
+  async function readScaled(file) {
+    const bmp = await createImageBitmap(file);
+    const k = Math.min(1, 4096 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas");
+    c.width = Math.round(bmp.width * k);
+    c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise((r) => c.toBlob(r, "image/png"));
+    return { name: file.name, bytes: new Uint8Array(await blob.arrayBuffer()), w: c.width, h: c.height };
+  }
+
+  document.getElementById("images").onclick = async () => {
+    const groups = [["desktop", document.getElementById("desk").files], ["mobile", document.getElementById("mob").files]];
+    if (!groups.some(([, f]) => f.length)) return log("Chưa chọn ảnh nào.");
+    busy(true);
+    for (const [device, files] of groups) {
+      if (!files.length) continue;
+      log(`Đang đọc ${files.length} ảnh ${device}…`);
+      const list = [];
+      for (const f of [...files].sort((a, b) => a.name.localeCompare(b.name))) list.push(await readScaled(f));
+      parent.postMessage({ pluginMessage: { type: "images", device, files: list } }, "*");
+    }
+  };
+
+  onmessage = (e) => {
+    const m = e.data.pluginMessage;
+    if (!m) return;
+    if (m.type === "log") log(m.text);
+    if (m.type === "done") { log(m.text); busy(false); }
+  };
+</script>
