@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+/* clip (không phải hidden) để không biến body thành vùng cuộn, giữ được header sticky. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  @apply bg-canvas text-ink-900 antialiased;
+  font-size: 16px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-line bg-white;
+  }
+  .card-hover {
+    @apply transition-shadow duration-200 hover:shadow-lift;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+  .btn {
+    @apply focus-ring inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800;
+  }
+  .btn-secondary {
+    @apply btn border border-indigo-600 bg-white text-indigo-600 hover:bg-indigo-50;
+  }
+  .btn-ghost {
+    @apply btn text-indigo-600 hover:bg-indigo-50;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-700;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .label-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.06em] text-ink-500;
+  }
+  .text-gradient {
+    @apply text-indigo-600;
+  }
+  .field {
+    @apply focus-ring w-full rounded-lg border border-line-strong bg-white px-3 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 hover:border-ink-500;
+  }
+  .page-title {
+    @apply text-2xl font-semibold tracking-tight text-ink-900 sm:text-[28px];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(72, 84, 110, 0.3);
+  border-radius: 999px;
+}
