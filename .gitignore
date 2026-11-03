@@ -32,5 +32,6 @@ Thumbs.db
 docs/
 AGENTS.md
 
-# cấu hình riêng của máy
-.claude/settings.local.json
+# cấu hình riêng của máy và công cụ ngoài source code
+.claude/
+figma-plugin/
