@@ -1,0 +1,36 @@
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+.env*.local
+__pycache__/
+.venv/
+data/models/
+data/corpus/.cache/
+
+# secrets (giữ lại .env.example)
+.env
+!.env.example
+
+# python
+*.pyc
+
+# log
+*.log
+
+# model nặng nằm ngoài data/models
+*.safetensors
+*.onnx
+
+# file tạm, bản sao lưu
+*.bak_*
+~$*
+.DS_Store
+Thumbs.db
+
+# tài liệu và ghi chú riêng, không đưa lên (chỉ đẩy source code)
+docs/
+AGENTS.md
+
+# cấu hình riêng của máy
+.claude/settings.local.json
