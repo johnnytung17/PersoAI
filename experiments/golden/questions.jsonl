@@ -1,0 +1,10 @@
+{"id": "s01", "split": "sample", "question": "Khi nào dùng HAVING thay vì WHERE?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c01": 2, "c02": 2, "c03": 1, "c06": 1}}
+{"id": "s02", "split": "sample", "question": "LEFT JOIN khác INNER JOIN ở điểm nào?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c05": 2, "c04": 2}}
+{"id": "s03", "split": "sample", "question": "Khóa chính có được để trống giá trị không?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c07": 2}}
+{"id": "s04", "split": "sample", "question": "Khóa ngoại dùng để làm gì?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c08": 2, "c07": 1}}
+{"id": "s05", "split": "sample", "question": "Hệ quản trị xử lý các mệnh đề của câu SELECT theo thứ tự nào?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c02": 2, "c10": 1}}
+{"id": "s06", "split": "sample", "question": "Làm sao đếm số đơn hàng của từng khách hàng?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c06": 2, "c01": 1}}
+{"id": "s07", "split": "sample", "question": "Một lược đồ đạt dạng chuẩn 3 khi nào?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c09": 2}}
+{"id": "s08", "split": "sample", "question": "Muốn sắp xếp kết quả giảm dần thì viết thế nào?", "owner": "u-tung", "course": "csdl", "answerable": true, "qrels": {"c10": 2}}
+{"id": "s09", "split": "sample", "question": "Trigger trong SQL Server được viết như thế nào?", "owner": "u-tung", "course": "csdl", "answerable": false, "qrels": {}}
+{"id": "s10", "split": "sample", "question": "Chỉ mục B-tree lưu dữ liệu ra sao?", "owner": "u-tung", "course": "csdl", "answerable": false, "qrels": {}}

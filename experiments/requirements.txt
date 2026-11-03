@@ -1,0 +1,4 @@
+# Thí nghiệm A/B — tách khỏi app để app không nặng thêm.
+# run_ab.py dùng lõi ai-service/rag/ nên cần các gói của ai-service; gói chỉ dùng cho A/B
+# (ví dụ vẽ biểu đồ, xuất bảng chấm mù) thêm vào dưới dòng này, không thêm vào ai-service/requirements.txt.
+-r ../ai-service/requirements.txt

@@ -1,0 +1,10 @@
+# Dịch vụ AI của app. PyTorch bản CUDA 13.0 lấy từ kho riêng của PyTorch (có bản cho Python 3.15).
+--extra-index-url https://download.pytorch.org/whl/cu130
+fastapi==0.161.1
+uvicorn==0.54.0
+pydantic==2.14.1
+# PyYAML chưa có wheel cho Python 3.15: dựng bản thuần Python (không cần trình biên dịch C).
+pyyaml==6.0.3 --config-settings=pyyaml_build_config={"force":0,"libyaml":0}
+numpy==2.5.4
+torch==2.14.1
+transformers==5.20.2

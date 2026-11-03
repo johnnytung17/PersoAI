@@ -1,0 +1,26 @@
+# Cấu hình app đang chạy (ai-service đọc file này khi khởi động).
+# Phải trùng hành vi với biến thể A/B experiments/configs/hybrid_rerank.yaml — run_ab.py kiểm tra điều này.
+name: hybrid_rerank
+corpus: data/corpus/csdl.jsonl
+
+retrieval:
+  mode: hybrid        # BM25 + dense BGE-M3, gộp bằng Reciprocal Rank Fusion
+  top_n: 20           # số ứng viên vòng 1
+  rrf_k: 60
+
+dense:
+  model: BAAI/bge-m3
+  device: auto        # cuda nếu có GPU, ngược lại cpu
+  fp16: true
+  max_length: 512
+  batch_size: 8
+  cache_dir: data/models   # nơi tải mô hình (đã bỏ qua trong .gitignore)
+
+rerank:
+  enabled: true
+  method: heuristic   # tạm thời; thay bằng BGE-reranker-v2-m3 sau
+
+answer:
+  top_k: 5            # số đoạn đưa vào ngữ cảnh trả lời
+  min_coverage: 0.5   # dưới ngưỡng thì từ chối (RAG-04)
+  max_sources: 2

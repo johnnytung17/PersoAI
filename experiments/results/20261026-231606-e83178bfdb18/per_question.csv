@@ -1,0 +1,31 @@
+variant,role,qid,answerable,refused,mrr@10,ndcg@5,recall@5,recall@20,top5,latency_ms
+hybrid,A,s01,True,False,1.0,0.926,0.75,1.0,c01 c02 c03 o01 c05,14.24
+hybrid,A,s02,True,False,1.0,1.0,1.0,1.0,c05 c04 c02 c03 c01,13.42
+hybrid,A,s03,True,False,1.0,1.0,1.0,1.0,c07 c08 c09 c05 c02,13.65
+hybrid,A,s04,True,False,1.0,1.0,1.0,1.0,c08 c07 c05 c09 c04,13.4
+hybrid,A,s05,True,False,1.0,1.0,1.0,1.0,c02 c10 c03 c04 c01,17.31
+hybrid,A,s06,True,False,1.0,0.2754,0.5,1.0,c01 c05 c02 c03 c07,13.31
+hybrid,A,s07,True,False,1.0,1.0,1.0,1.0,c09 c01 o01 c03 c07,13.48
+hybrid,A,s08,True,False,1.0,1.0,1.0,1.0,c10 c02 c03 c01 c09,13.43
+hybrid,A,s09,False,False,,,,,c02 c03 c07 c04 o01,15.18
+hybrid,A,s10,False,True,,,,,c04 c09 c07 c01 c06,14.53
+hybrid_rerank,B,s01,True,False,1.0,0.8811,0.75,1.0,c02 c03 c01 o01 c05,13.89
+hybrid_rerank,B,s02,True,False,1.0,1.0,1.0,1.0,c05 c04 c02 c03 c01,14.38
+hybrid_rerank,B,s03,True,False,0.5,0.6309,1.0,1.0,c08 c07 c09 c05 c04,13.81
+hybrid_rerank,B,s04,True,False,1.0,1.0,1.0,1.0,c08 c07 c09 c05 c04,13.33
+hybrid_rerank,B,s05,True,False,1.0,1.0,1.0,1.0,c02 c10 c04 c08 c07,14.42
+hybrid_rerank,B,s06,True,False,1.0,0.2754,0.5,1.0,c01 c05 c02 c03 c07,13.09
+hybrid_rerank,B,s07,True,False,1.0,1.0,1.0,1.0,c09 o01 c01 c03 c07,13.21
+hybrid_rerank,B,s08,True,False,1.0,1.0,1.0,1.0,c10 c03 c01 c02 c09,14.24
+hybrid_rerank,B,s09,False,False,,,,,c02 c03 c07 c04 o01,16.06
+hybrid_rerank,B,s10,False,True,,,,,c04 c09 c01 c06 c07,13.72
+dense,tham chiếu,s01,True,False,1.0,0.8811,0.75,1.0,c01 c03 c02 o01 c10,13.3
+dense,tham chiếu,s02,True,False,1.0,1.0,1.0,1.0,c05 c04 c02 c03 c01,12.6
+dense,tham chiếu,s03,True,False,1.0,1.0,1.0,1.0,c07 c08 c09 c05 c10,12.96
+dense,tham chiếu,s04,True,False,1.0,0.9639,1.0,1.0,c08 c05 c07 c09 c04,14.68
+dense,tham chiếu,s05,True,False,1.0,1.0,1.0,1.0,c02 c10 c03 c01 c06,13.49
+dense,tham chiếu,s06,True,False,1.0,0.6313,1.0,1.0,c01 c10 o01 c06 c02,13.96
+dense,tham chiếu,s07,True,False,1.0,1.0,1.0,1.0,c09 c01 o01 c07 c10,13.63
+dense,tham chiếu,s08,True,False,1.0,1.0,1.0,1.0,c10 c02 o01 c03 c01,13.38
+dense,tham chiếu,s09,False,False,,,,,c02 c03 c07 c04 o01,13.52
+dense,tham chiếu,s10,False,True,,,,,c10 c02 c09 c04 c07,13.2
